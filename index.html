@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap-slider/bootstrap-slider.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -13,83 +12,165 @@
 <body>
   
 <div class="container">
-    <div class="row">       
-        <div class="col-xs-6">
+    <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#replaylist">Replay List</a></li>
+        <li><a data-toggle="pill" href="#versuslist">Versus List</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="replaylist" class="tab-pane fade in active">
+            <div class="row">       
+                <div class="col-xs-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Input</div>
+                    
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                               <label for="">Replay String</label>
+                                <div class="material-switch pull-right">
+                                    <input id="replay-string" type="text"/>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Twitch / Player ID</label>
+                                <div class="material-switch pull-right">
+                                    <input id="replay-player-id" type="text"/>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Subscriber</label>
+                                <div class="material-switch pull-right">
+                                    <input id="replay-sub-checkbox" name="someSwitchOption001" type="checkbox"/>
+                                    <label for="replay-sub-checkbox" class="label-warning"></label>
+                                </div>
+                            </li>
+                            <li class="list-group-item text-right">
+                                <button type="submit" class="btn btn-primary add-replay-btn">Add Replay</button>
+                            </li>
+                        </ul>
+                    </div>            
+                </div>        
+                
+                <div class="col-xs-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Settings</div>            
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            <label for="">Sub Delay</label>
+                                <div class="material-switch pull-right">
+                                    <div name="slider">
+                                        <input id="replay-sub-slider" data-slider-id='sub-slider' type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="0"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Allow Same Player on Queue</label>
+                                <div class="material-switch pull-right">
+                                    <input id="replay-same-player" name="someSwitchOption001" type="checkbox"/>
+                                    <label for="replay-same-player" class="label-warning"></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
             <div class="panel panel-success">
-                <div class="panel-heading">Input</div>
-            
-                <ul class="list-group">
-                    <li class="list-group-item">
-                       <label for="">Replay String</label>
-                        <div class="material-switch pull-right">
-                            <input id="replay-string" type="text"/>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <label for="">Twitch / Player ID</label>
-                        <div class="material-switch pull-right">
-                            <input id="player-id" type="text"/>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <label for="">Subscriber</label>
-                        <div class="material-switch pull-right">
-                            <input id="sub-checkbox" name="someSwitchOption001" type="checkbox"/>
-                            <label for="sub-checkbox" class="label-warning"></label>
-                        </div>
-                    </li>
-                    <li class="list-group-item text-right">
-                        <button type="submit" class="btn btn-primary add-replay-btn">Add Replay</button>
-                    </li>
-                </ul>
-            </div>            
-        </div>        
-        
-        <div class="col-xs-6">
+                <div class="panel-heading">Replay List</div>
+                <table class="table" id="replay-table">
+                    <thead>
+                        <tr>
+                            <th>Replay String</th>
+                            <th>Twitch / Player ID</th>
+                            <th>Sub</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="versuslist" class="tab-pane fade">
+            <div class="row">       
+                <div class="col-xs-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Input</div>
+                    
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                               <label for="">Character</label>
+                                <div class="material-switch pull-right" id="character-list-div">
+                                      <select class="form-control" id="character-list">
+                                        <option value="Any" selected>Any</option>
+                                      </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Twitch / Player ID</label>
+                                <div class="material-switch pull-right">
+                                    <input id="versus-player-id" type="text"/>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Subscriber</label>
+                                <div class="material-switch pull-right">
+                                    <input id="versus-sub-checkbox" name="someSwitchOption001" type="checkbox"/>
+                                    <label for="versus-sub-checkbox" class="label-warning"></label>
+                                </div>
+                            </li>
+                            <li class="list-group-item text-right">
+                                <button type="submit" class="btn btn-primary add-versus-btn">Add Set</button>
+                            </li>
+                        </ul>
+                    </div>            
+                </div>        
+                
+                <div class="col-xs-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">Settings</div>            
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                            <label for="">Sub Delay</label>
+                                <div class="material-switch pull-right">
+                                    <div name="slider">
+                                        <input id="versus-sub-slider" data-slider-id='sub-slider' type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="0"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <label for="">Allow Same Player on Queue</label>
+                                <div class="material-switch pull-right">
+                                    <input id="versus-same-player" name="someSwitchOption001" type="checkbox"/>
+                                    <label for="versus-same-player" class="label-warning"></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> 
+                </div>
+            </div>
             <div class="panel panel-success">
-                <div class="panel-heading">Settings</div>            
-                <ul class="list-group">
-                    <li class="list-group-item">
-                    <label for="">Sub Delay</label>
-                        <div class="material-switch pull-right">
-                            <div name="slider">
-                                <input id="sub-slider" data-slider-id='sub-slider' type="text" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="0"/>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <label for="">Allow Same Player on Queue</label>
-                        <div class="material-switch pull-right">
-                            <input id="same-player" name="someSwitchOption001" type="checkbox"/>
-                            <label for="same-player" class="label-warning"></label>
-                        </div>
-                    </li>
-                </ul>
-            </div> 
+                <div class="panel-heading">Match List</div>
+                <table class="table" id="versus-table">
+                    <thead>
+                        <tr>
+                            <th>My character</th>
+                            <th>Twitch / Player ID</th>
+                            <th>Sub</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="panel panel-success">
-        <div class="panel-heading">Replay List</div>
-        <table class="table" id="replay-table">
-            <thead>
-                <tr>
-                    <th>Replay String</th>
-                    <th>Twitch / Player ID</th>
-                    <th>Sub</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
 </div>             
+
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="vendor/remarkable-bootstrap-notify/bootstrap-notify.js"></script>
     <script type="text/javascript" src="vendor/bootstrap-slider/bootstrap-slider.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    
+    <script type="text/javascript" src="js/index.js"></script>    
     
 </body>
 
